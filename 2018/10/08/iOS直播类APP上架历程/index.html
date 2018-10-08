@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="蜡笔小新Zzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前言 前段时间上架直播教育类APP,考虑之前一直没有做过类似的APP(内购),上架历程是心酸的,七次被拒,一直被拒的心情真是糟糕透了,现在就分享被拒的经历,重点:通过观察被拒的经历,领导急着上线,觉得还是准备不充分,同时自己没有去了解内购的知识,试着侥幸心理去通过审核   第一次 这个问题是:数据不正确引起的,后台未切换正式数据库,审核时造成数据显示测试数据,所有苹果审核是觉得这个是个内部APP">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS直播类APP上架历程">
+<meta property="og:url" content="http://yoursite.com/2018/10/08/iOS直播类APP上架历程/index.html">
+<meta property="og:site_name" content="蜡笔小新Zzz">
+<meta property="og:description" content="前言 前段时间上架直播教育类APP,考虑之前一直没有做过类似的APP(内购),上架历程是心酸的,七次被拒,一直被拒的心情真是糟糕透了,现在就分享被拒的经历,重点:通过观察被拒的经历,领导急着上线,觉得还是准备不充分,同时自己没有去了解内购的知识,试着侥幸心理去通过审核   第一次 这个问题是:数据不正确引起的,后台未切换正式数据库,审核时造成数据显示测试数据,所有苹果审核是觉得这个是个内部APP">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-08T01:36:11.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS直播类APP上架历程">
+<meta name="twitter:description" content="前言 前段时间上架直播教育类APP,考虑之前一直没有做过类似的APP(内购),上架历程是心酸的,七次被拒,一直被拒的心情真是糟糕透了,现在就分享被拒的经历,重点:通过观察被拒的经历,领导急着上线,觉得还是准备不充分,同时自己没有去了解内购的知识,试着侥幸心理去通过审核   第一次 这个问题是:数据不正确引起的,后台未切换正式数据库,审核时造成数据显示测试数据,所有苹果审核是觉得这个是个内部APP">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/08/iOS直播类APP上架历程/"/>
+
+
+
+
+
+  <title>iOS直播类APP上架历程 | 蜡笔小新Zzz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蜡笔小新Zzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/08/iOS直播类APP上架历程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蜡笔小新Zzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蜡笔小新Zzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS直播类APP上架历程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-08T09:34:46+08:00">
+                2018-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>前段时间上架直播教育类APP,考虑之前一直没有做过类似的APP(内购),上架历程是心酸的,七次被拒,一直被拒的心情真是糟糕透了,现在就分享被拒的经历,重点:通过观察被拒的经历,领导急着上线,觉得还是准备不充分,同时自己没有去了解内购的知识,试着侥幸心理去通过审核</p>
+</blockquote>
+<ul>
+<li>第一次<blockquote>
+<p>这个问题是:数据不正确引起的,后台未切换正式数据库,审核时造成数据显示测试数据,所有苹果审核是觉得这个是个内部APP</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Guideline 2.1 - Information Needed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We have started the review of your app, but we are not able to continue because we need additional information about your app.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To help us proceed with the review of your app, please provide detailed information to the following questions. The more information you can provide upfront, the sooner we can complete your review.</span><br><span class="line"></span><br><span class="line">- Who is the target audience of your app? - Is this app intended for internal employees of one company only?</span><br><span class="line">- What is the relationship between the developer and the company using this app? - In which country will this app be distributed?</span><br><span class="line">- How do users receive a username / password?</span><br><span class="line">- Do users able to access any paid videos, or one to many live streaming classes or playback in your app? </span><br><span class="line">- What is the payment method?</span><br><span class="line"></span><br><span class="line">Once you reply to this message in Resolution Center with the requested information, we can proceed with your review.</span><br><span class="line"></span><br><span class="line">Please see attached screenshots for details.</span><br><span class="line"></span><br><span class="line">Since your App Store Connect status is Metadata Rejected, we do NOT require a new binary. To revise the metadata, visit App Store Connect to select your app and revise the desired metadata values. Once you’ve completed all changes, reply to this message in Resolution Center and we will continue the review.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解决<blockquote>
+<p>后台切换正式数据库,向苹果说明APP具体是干啥的,一些相关事宜,不需要重新提交APP</p>
+</blockquote>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>第二次<blockquote>
+<p>这个问题是:我们APP考虑需要收集用户数据,第一次需要强制登录,下次之后就直接进入首页</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We noticed that your app requires users to register with personal information to access non account-based features. Apps cannot require user registration prior to allowing access to app content and features that are not associated specifically to the user.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">User registration that requires the sharing of personal information must be optional or tied to account-specific functionality. Additionally, the requested information must be relevant to the features.</span><br><span class="line"></span><br><span class="line">Please see attached screenshot for details.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>解决</p>
+<blockquote>
+<p>直接去掉强制登录,或者在登录页面加入跳过按钮,我选择是去掉强制登录功能</p>
+</blockquote>
+</li>
+<li><p>第三次</p>
+<blockquote>
+<p>这个问题是:打算考虑前期APP不需要购买观看相应视频,但是苹果不允许这样操作,说需要加入内购</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Guideline 3.1.1 - Business - Payments - In-App Purchase</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We noticed that your app or its metadata enables the purchase of content, services, or functionality in the app by means other than the in-app purchase API, which is not appropriate for the App Store.</span><br><span class="line"></span><br><span class="line">Please see attached screenshots for details.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">While the payment system that you have included may conduct the transaction outside of the app, if the purchasable content, functionality, or services are intended to be used in the app, they must be purchased using in-app purchase, within the app - unless it is of the type referenced in guideline 3.1.3 of the App Store Review Guidelines.</span><br><span class="line"></span><br><span class="line">In-App Purchase</span><br><span class="line"></span><br><span class="line">It may be appropriate to revise your app to use the in-app purchase API to provide content purchasing functionality.</span><br><span class="line"></span><br><span class="line">In-app purchase provides several benefits, including:</span><br><span class="line"></span><br><span class="line">- The flexibility to support a variety of business models.</span><br><span class="line">- Impacting your app ranking by consolidating your sales to one app rather than distributing them across multiple apps.</span><br><span class="line">- An effective marketing vehicle to drive additional sales of new content.</span><br><span class="line"></span><br><span class="line">For information on in-app purchase, please refer to the following documentation:</span><br><span class="line"></span><br><span class="line">In-App Purchase for Developers</span><br><span class="line"></span><br><span class="line">In-App Purchase Programming Guide</span><br><span class="line"></span><br><span class="line">For step-by-step instructions on in-app purchase creation within App Store Connect, refer to App Store Connect Help.</span><br><span class="line"></span><br><span class="line">Please see attached screenshot for details.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>解决</p>
+<blockquote>
+<p>添加内购功能</p>
+</blockquote>
+</li>
+<li><p>第四次</p>
+<blockquote>
+<p>这个问题是:直接类了个大礼包,忘记勾选内购产品,提示苹果政策问题,不需要登录也能游客购买,不能有提现功能</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">Guideline 2.1 - Performance - App Completeness</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We are unable to complete the review of your app because one or more of your in-app purchase products have not been submitted for review.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To resolve this issue, please be sure to take action and submit your in-app purchases and upload a new binary in App Store Connect. Learn more about how to offer in-app purchases in App Store Connect Developer Help.</span><br><span class="line"></span><br><span class="line">Once you&apos;ve submitted your in-app purchases and uploaded a new binary, we can proceed with your review.</span><br><span class="line"></span><br><span class="line">Guideline 2.3 - Performance - Accurate Metadata</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We noticed that your app&apos;s metadata includes the following information, which is not relevant to the app&apos;s content and functionality:</span><br><span class="line"></span><br><span class="line">&quot;因Apple政策原因&quot;</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To resolve this issue, please revise or remove this content from your app&apos;s metadata. For resources on metadata best practices, you may want to review the App Store Product Page information available on the Apple developer portal.</span><br><span class="line"></span><br><span class="line">Guideline 3.1.1 - Business - Payments - In-App Purchase</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We noticed that your app uses in-app purchase products to purchase credits or currencies that are not consumed within the app, which is not appropriate for the App Store.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To resolve this issue, please revise your app to ensure that the credits or currencies purchased with in-app purchase products are used within the app or remove the in-app purchases entirely.</span><br><span class="line"></span><br><span class="line">Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We noticed that your app requires users to register with personal information to purchase non account-based in-app purchase products, which does not comply with the App Store Review Guidelines.</span><br><span class="line"></span><br><span class="line">Apps cannot require user registration prior to allowing access to app content and features that are not associated specifically to the user.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">User registration that requires the sharing of personal information must be optional or tied to account-specific functionality.</span><br><span class="line"></span><br><span class="line">To resolve this issue, please make it clear to the user that registering will enable them to access the content from any of their iOS devices and provide them a way to register at any time, if they wish to later extend access to additional iOS devices.</span><br><span class="line"></span><br><span class="line">Please note that although guideline 3.1.2 of the App Store Review Guidelines requires an app to make subscription content available to all the iOS devices owned by a single user, it is not appropriate to force user registration to meet this requirement; such user registration must be made optional.</span><br><span class="line"></span><br><span class="line">Request a phone call from App Review</span><br><span class="line"></span><br><span class="line">At your request, we can arrange for an Apple Representative to call you within the next three to five business days to discuss your App Review issue. Our representative will be able to discuss the issue in English or Chinese.</span><br><span class="line"></span><br><span class="line">Request a call to discuss your app&apos;s review</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>解决</p>
+<blockquote>
+<p>首先申请苹果审核沟通电话,电话沟通她会告诉你哪里出了问题,需要按照相关规定来开发APP,只能一条一条去解决被拒的问题了,添加游客购买,删除相关提示等</p>
+</blockquote>
+</li>
+<li><p>第五次</p>
+<blockquote>
+<p>这个问题是:后台地址为空,加载不出来播放地址</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Guideline 2.1 - Performance - App Completeness</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We discovered one or more bugs in your app when reviewed on iOS 12 on Wi-Fi connected to an IPv6 network.</span><br><span class="line"></span><br><span class="line">Specifically, the app’s video content did not load.</span><br><span class="line"></span><br><span class="line">Please see attached screenshots for details.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To resolve this issue, please run your app on a device to identify any issues, then revise and resubmit your app for review.</span><br><span class="line"></span><br><span class="line">For new apps, uninstall all previous versions of your app from a device, then install and follow the steps to reproduce the issue. For updates, install the new version as an update to the previous version, then follow the steps to reproduce the issue.</span><br><span class="line"></span><br><span class="line">Resources</span><br><span class="line"></span><br><span class="line">For information about testing your app and preparing it for review, please see Technical Note TN2431: App Testing Guide. </span><br><span class="line"></span><br><span class="line">For a networking overview, please review About Networking. For a more specific overview of App Review’s IPv6 requirements, please review the IPv6 and App Review discussion on the Apple Developer Forum.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>解决</p>
+<blockquote>
+<p>增加逻辑判断</p>
+</blockquote>
+</li>
+<li><p>第六次</p>
+<blockquote>
+<p>这个问题是:APP打赏问题,不能直接红包打赏,提示信息不能直接显示红包内容,只能换成对等的虚拟物品进行打赏</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Guideline 3.1.1 - Business - Payments - In-App Purchase</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We noticed that your app allows users to &quot;tip&quot; the digital content creators in your app with a mechanism other than the in-app purchase API, which is not appropriate for the App Store.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To resolve this issue, please revise your app to use the in-app purchase API to pay for these sorts of transactions. Please note that while guideline 3.2.1(vii) of the App Store Review Guidelines allows individual users to give a monetary gift to another individual user without using in-app purchase, that gift must not be connected to or associated at any point in time with receiving digital content or services.</span><br><span class="line"></span><br><span class="line">While the payment system that you have included may conduct the transaction outside of the app, if the purchasable content, functionality, or services are intended to be consumed within the app, they must be purchased through in-app purchase - unless it is of the type referenced in guideline 3.1.3 of the App Store Review Guidelines.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第七次<blockquote>
+<p>这个问题是:苹果不知道购买内购产品,也许是我文字太小,让苹果爸爸没有看见</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Guideline 2.1 - Information Needed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We have started the review of your app, but we are not able to continue because we cannot locate the in-app purchases within your app.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To help us proceed with the review of your app, please reply to this message providing the steps for locating the in-app purchases in your app.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解决<blockquote>
+<p>回复:购买流程步骤给苹果爸爸,或者录制视频,上传视频网站,给的地址给苹果爸爸,重新上传APP版本</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><ol>
+<li>准备上架资料必须充分</li>
+<li>内购被拒,你的内购产品必须删除,重新添加</li>
+<li>必须按照苹果爸爸的条件上架APP</li>
+<li>第一个版本上架APP,如果添加了内购功能,苹果爸爸审核的特别严,虽然说现在审核时间1-2天的样子</li>
+</ol>
+<blockquote>
+<p>在此记录上架被拒历程,希望自己能记住,上架是残酷的,解决问题才是王道,努力做好每一件事!加油</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/06/hexo博客迁移/" rel="next" title="hexo博客迁移">
+                <i class="fa fa-chevron-left"></i> hexo博客迁移
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">蜡笔小新Zzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/sinaming" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节"><span class="nav-text">细节</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蜡笔小新Zzz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
